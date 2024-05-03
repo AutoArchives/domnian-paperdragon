@@ -1,0 +1,45 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: willies952002 <admin@domnian.com>
+Date: Thu, 3 May 2018 21:32:29 -0400
+Subject: [PATCH] Enhanced Player Death Event
+
+
+diff --git a/src/main/java/org/bukkit/event/entity/PlayerDeathEvent.java b/src/main/java/org/bukkit/event/entity/PlayerDeathEvent.java
+index 66e9d65a8dd05bed05d0ab46ec64206a6dae0507..879001a922c3ec4ac8bbdcc5df6ce28ca6c147c8 100644
+--- a/src/main/java/org/bukkit/event/entity/PlayerDeathEvent.java
++++ b/src/main/java/org/bukkit/event/entity/PlayerDeathEvent.java
+@@ -16,6 +16,7 @@ public class PlayerDeathEvent extends EntityDeathEvent {
+     private int newTotalExp = 0;
+     private boolean keepLevel = false;
+     private boolean keepInventory = false;
++    private String sourceKey = "death.attack.generic"; // PaperDragon - Enhanced Player Death Event
+     private boolean doExpDrop; // Paper - shouldDropExperience API
+     // Paper start - adventure
+     @org.jetbrains.annotations.ApiStatus.Internal
+@@ -291,4 +292,26 @@ public class PlayerDeathEvent extends EntityDeathEvent {
+     public boolean getKeepInventory() {
+         return keepInventory;
+     }
++
++    // PaperDragon start - Enhanced Player Death Event
++    /**
++     * Sets the translation key for this type of death.
++     *
++     * @param key the translation key for this type of death.
++     */
++    public void setSourceKey(@NotNull String key) {
++        this.sourceKey = key;
++    }
++
++    /**
++     * Gets the translation key for this type of death.
++     *
++     * @return the translation key for this type of death.
++     */
++    @NotNull
++    public String getSourceKey() {
++        return sourceKey;
++    }
++    // PaperDragon end
++
+ }

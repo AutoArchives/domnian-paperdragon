@@ -1,0 +1,39 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Aikar <aikar@aikar.co>
+Date: Sun, 1 Jan 2017 20:35:55 -0500
+Subject: [PATCH] ShulkerBox API
+
+
+diff --git a/src/main/java/com/domnian/paperdragon/api/DAPI_Misc.java b/src/main/java/com/domnian/paperdragon/api/DAPI_Misc.java
+index 5a4f633046bc0645a9864819919270d74a9aebcc..4600c91e958e349622ae740385bae39f5cca02c4 100644
+--- a/src/main/java/com/domnian/paperdragon/api/DAPI_Misc.java
++++ b/src/main/java/com/domnian/paperdragon/api/DAPI_Misc.java
+@@ -27,10 +27,28 @@ import org.bukkit.Location;
+ import org.bukkit.StructureType;
+ import org.bukkit.inventory.ItemStack;
+ import org.jetbrains.annotations.NotNull;
++import org.jetbrains.annotations.Nullable;
++
++import java.util.List;
+ 
+ public interface DAPI_Misc {
+ 
+     @NotNull
+     ItemStack createTreasureMap(@NotNull StructureType type, @NotNull Location loc);
+ 
++    /**
++     * Returns if this is a shulker box with items in it.
++     * @param shulker
++     * @return Has items or not
++     */
++    boolean hasShulkerInventory(@NotNull ItemStack shulker);
++
++    /**
++     * Returns a list of items inside of a Shulker Box Item Stack
++     * @param shulker
++     * @return List of Items, Not Mutable
++     */
++    @Nullable
++    List<ItemStack> getShulkerInventory(@NotNull ItemStack shulker);
++
+ }

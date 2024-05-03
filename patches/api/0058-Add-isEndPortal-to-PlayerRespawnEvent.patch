@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: chickeneer <emcchickeneer@gmail.com>
+Date: Tue, 17 Mar 2020 12:24:45 -0500
+Subject: [PATCH] Add isEndPortal to PlayerRespawnEvent
+
+
+diff --git a/src/main/java/org/bukkit/event/player/PlayerRespawnEvent.java b/src/main/java/org/bukkit/event/player/PlayerRespawnEvent.java
+index b45f265ec7819b06a9a8361e8c1e43fd88b3138b..704512654e12da44c8c108d116c79eb4883a485c 100644
+--- a/src/main/java/org/bukkit/event/player/PlayerRespawnEvent.java
++++ b/src/main/java/org/bukkit/event/player/PlayerRespawnEvent.java
+@@ -90,6 +90,20 @@ public class PlayerRespawnEvent extends PlayerEvent {
+         return isAnchorSpawn;
+     }
+ 
++    // PaperDragon start - add isEndPortal
++    /**
++     * Gets whether the respawn is caused by entering an end portal leaving the end.
++     *
++     * @deprecated
++     * @see PlayerRespawnEvent#getRespawnReason()
++     * @return true if the respawn is caused by an end portal
++     */
++    @Deprecated
++    public boolean isEndPortal() {
++        throw new UnsupportedOperationException("No longer supported");
++    }
++    // PaperDragon end
++
+     /**
+      * Gets the reason this respawn event was called.
+      *
